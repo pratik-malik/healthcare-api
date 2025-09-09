@@ -140,7 +140,7 @@ class AppointmentController extends BaseController
             $now = Carbon::now();
             $start = Carbon::parse($appointment->appointment_start_time);
 
-            if ($start->diffInHours($now, false) <= 24 && $start->isFuture()) {
+            if ($start->lessThan($now->addDay())) {
                 return $this->sendError('Cancellation not allowed within 24 hours of the appointment time', [], 422);
             }
 

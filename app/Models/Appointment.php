@@ -44,12 +44,12 @@ class Appointment extends Model
 
     public function getFormattedStartTimeAttribute()
     {
-        return $this->appointment_start_time->format('Y-m-d H:i:s');
+        return $this->appointment_start_time->format('Y-m-d H:i');
     }
 
     public function getFormattedEndTimeAttribute()
     {
-        return $this->appointment_end_time->format('Y-m-d H:i:s');
+        return $this->appointment_end_time->format('Y-m-d H:i');
     }
 
     public function getFormattedCreatedAtAttribute()

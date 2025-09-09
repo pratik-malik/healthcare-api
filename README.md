@@ -68,6 +68,13 @@ Follow these steps to get the project running locally:
     php artisan migrate:fresh --seed
     ```
 
+## Running Tests
+This project uses PHPUnit for feature and unit tests. Run the test by following command to check all the tests
+```
+php artisan test
+```
+
+
 ## Development
 
 Start the development server:

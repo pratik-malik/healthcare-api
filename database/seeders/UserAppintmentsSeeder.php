@@ -20,11 +20,12 @@ class UserAppintmentsSeeder extends Seeder
         $professionals = HealthcareProfessional::all();
 
         foreach ($users as $user) {
-            $appointments = Appointment::factory()->count(3)->make([
-                'user_id' => $user->id,
-                'healthcare_professional_id' => $professionals->random()->id,
-            ]);
-            Appointment::insert($appointments->toArray());
+            foreach (range(1, 3) as $i) {
+                Appointment::factory()->create([
+                    'user_id' => $user->id,
+                    'healthcare_professional_id' => $professionals->random()->id,
+                ]);
+            }
         }
     }
 }
