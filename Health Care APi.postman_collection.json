@@ -36,7 +36,140 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Success Response",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"User 1\",\r\n    \"email\": \"user1@mail.com\",\r\n    \"password\": \"password\",\r\n    \"password_confirmation\": \"password\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{site_url}}/register",
+							"host": [
+								"{{site_url}}"
+							],
+							"path": [
+								"register"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.12"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 09 Sep 2025 12:21:45 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"message\": \"User registered successfully\",\n    \"data\": {\n        \"id\": 11,\n        \"name\": \"User 1\",\n        \"email\": \"user1@mail.com\"\n    }\n}"
+				},
+				{
+					"name": "Error Response",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"User 1\",\r\n    \"email\": \"user1@mail.com\",\r\n    \"password\": \"password\",\r\n    \"password_confirmation\": \"password\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{site_url}}/register",
+							"host": [
+								"{{site_url}}"
+							],
+							"path": [
+								"register"
+							]
+						}
+					},
+					"status": "Unprocessable Content",
+					"code": 422,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.12"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 09 Sep 2025 12:22:18 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"The email has already been taken.\",\n    \"errors\": {\n        \"email\": [\n            \"The email has already been taken.\"\n        ]\n    }\n}"
+				}
+			]
 		},
 		{
 			"name": "Login",
@@ -89,13 +222,243 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Success Response",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"user1@mail.com\",\r\n    \"password\": \"password\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{site_url}}/login",
+							"host": [
+								"{{site_url}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.12"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 09 Sep 2025 12:22:37 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"message\": \"Login successful\",\n    \"data\": {\n        \"id\": 11,\n        \"name\": \"User 1\",\n        \"email\": \"user1@mail.com\",\n        \"token\": \"1|1s9MiwZNTh8ypJSoccOu3MrKktxOJU1lcfhycc8nbef44c31\"\n    }\n}"
+				},
+				{
+					"name": "Error Response",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"user2@mail.com\",\r\n    \"password\": \"password\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{site_url}}/login",
+							"host": [
+								"{{site_url}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"status": "Unprocessable Content",
+					"code": 422,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.12"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 09 Sep 2025 12:23:04 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"The selected email is invalid.\",\n    \"errors\": {\n        \"email\": [\n            \"The selected email is invalid.\"\n        ]\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Logout",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Clear the auth_token after logout\r",
+							"pm.collectionVariables.unset(\"auth_token\");\r",
+							"console.log(\"Auth token removed from collection\");\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{site_url}}/logout",
+					"host": [
+						"{{site_url}}"
+					],
+					"path": [
+						"logout"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Success Response",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{site_url}}/logout",
+							"host": [
+								"{{site_url}}"
+							],
+							"path": [
+								"logout"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.12"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 09 Sep 2025 12:24:33 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Logged out\"\n}"
+				}
+			]
 		},
 		{
 			"name": "Auth User",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
 			"request": {
 				"method": "GET",
 				"header": [
@@ -110,10 +473,6 @@
 						"type": "text"
 					}
 				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"healthcare_professional_id\": \"1\",\r\n    \"appointment_start_time\": \"2025-09-09 13:00\",\r\n    \"appointment_end_time\": \"2025-09-09 13:30\"\r\n}"
-				},
 				"url": {
 					"raw": "{{site_url}}/get-profile",
 					"host": [
@@ -124,7 +483,198 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Success Response 1",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{site_url}}/get-profile",
+							"host": [
+								"{{site_url}}"
+							],
+							"path": [
+								"get-profile"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.12"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 09 Sep 2025 12:24:03 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"message\": \"User profile fetched successfully\",\n    \"data\": {\n        \"id\": 11,\n        \"name\": \"User 1\",\n        \"email\": \"user1@mail.com\",\n        \"appointments\": []\n    }\n}"
+				},
+				{
+					"name": "Error Response",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{site_url}}/get-profile",
+							"host": [
+								"{{site_url}}"
+							],
+							"path": [
+								"get-profile"
+							]
+						}
+					},
+					"status": "Unauthorized",
+					"code": 401,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.12"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 09 Sep 2025 12:25:02 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Unauthenticated.\"\n}"
+				},
+				{
+					"name": "Success Response 2",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{site_url}}/get-profile",
+							"host": [
+								"{{site_url}}"
+							],
+							"path": [
+								"get-profile"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.12"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 09 Sep 2025 12:33:42 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"message\": \"User profile fetched successfully\",\n    \"data\": {\n        \"id\": 11,\n        \"name\": \"User 1\",\n        \"email\": \"user1@mail.com\",\n        \"appointments\": [\n            {\n                \"id\": 31,\n                \"appointment_start_time\": \"2025-12-10 12:30\",\n                \"appointment_end_time\": \"2025-12-10 14:30\",\n                \"status\": \"booked\",\n                \"created_at\": \"2025-09-09 18:03:39\"\n            }\n        ]\n    }\n}"
+				}
+			]
 		},
 		{
 			"name": "Book Appointment",
@@ -144,7 +694,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"healthcare_professional_id\": \"1\",\r\n    \"appointment_start_time\": \"2025-09-09 18:30\",\r\n    \"appointment_end_time\": \"2025-09-09 18:45\"\r\n}"
+					"raw": "{\r\n    \"healthcare_professional_id\": \"2\",\r\n    \"appointment_start_time\": \"2025-12-10 12:30\",\r\n    \"appointment_end_time\": \"2025-12-10 14:30\"\r\n}"
 				},
 				"url": {
 					"raw": "{{site_url}}/appointments",
@@ -156,7 +706,206 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Success Response",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"healthcare_professional_id\": \"1\",\r\n    \"appointment_start_time\": \"2025-11-01 12:30\",\r\n    \"appointment_end_time\": \"2025-11-01 14:30\"\r\n}"
+						},
+						"url": {
+							"raw": "{{site_url}}/appointments",
+							"host": [
+								"{{site_url}}"
+							],
+							"path": [
+								"appointments"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.12"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 09 Sep 2025 12:25:36 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"message\": \"Appointment created successfully\",\n    \"data\": {\n        \"id\": 31,\n        \"professional\": {\n            \"id\": 1,\n            \"name\": \"Gene Koch\",\n            \"specialty\": \"Dentist\"\n        },\n        \"appointment_start_time\": \"2025-11-01 12:30\",\n        \"appointment_end_time\": \"2025-11-01 14:30\",\n        \"status\": \"booked\",\n        \"created_at\": \"2025-09-09 17:55:36\"\n    }\n}"
+				},
+				{
+					"name": "Error Response 1",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"healthcare_professional_id\": \"1\",\r\n    \"appointment_start_time\": \"2025-11-01 12:30\",\r\n    \"appointment_end_time\": \"2025-11-01 14:30\"\r\n}"
+						},
+						"url": {
+							"raw": "{{site_url}}/appointments",
+							"host": [
+								"{{site_url}}"
+							],
+							"path": [
+								"appointments"
+							]
+						}
+					},
+					"status": "Unprocessable Content",
+					"code": 422,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.12"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 09 Sep 2025 12:25:58 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": false,\n    \"message\": \"The professional is already booked during this time\"\n}"
+				},
+				{
+					"name": "Error Response 2",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"healthcare_professional_id\": \"2\",\r\n    \"appointment_start_time\": \"2025-11-01 12:30\",\r\n    \"appointment_end_time\": \"2025-11-01 14:30\"\r\n}"
+						},
+						"url": {
+							"raw": "{{site_url}}/appointments",
+							"host": [
+								"{{site_url}}"
+							],
+							"path": [
+								"appointments"
+							]
+						}
+					},
+					"status": "Unprocessable Content",
+					"code": 422,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.12"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 09 Sep 2025 12:26:19 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": false,\n    \"message\": \"You already have an appointment during this time\"\n}"
+				}
+			]
 		},
 		{
 			"name": "Professionals List",
@@ -186,7 +935,69 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Success Response",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{site_url}}/professionals",
+							"host": [
+								"{{site_url}}"
+							],
+							"path": [
+								"professionals"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.12"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 09 Sep 2025 12:26:41 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"message\": \"Healthcare professionals fetched successfully\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"name\": \"Gene Koch\",\n            \"specialty\": \"Dentist\"\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Nia Gusikowski Jr.\",\n            \"specialty\": \"Dentist\"\n        },\n        {\n            \"id\": 3,\n            \"name\": \"Lenna Labadie\",\n            \"specialty\": \"General Practitioner\"\n        },\n        {\n            \"id\": 4,\n            \"name\": \"Prof. Keshawn Greenholt DVM\",\n            \"specialty\": \"General Practitioner\"\n        },\n        {\n            \"id\": 5,\n            \"name\": \"Dr. Lauryn Romaguera II\",\n            \"specialty\": \"General Practitioner\"\n        },\n        {\n            \"id\": 6,\n            \"name\": \"Dr. Ola Stroman\",\n            \"specialty\": \"Dermatologist\"\n        },\n        {\n            \"id\": 7,\n            \"name\": \"Neil Trantow\",\n            \"specialty\": \"Pediatrician\"\n        },\n        {\n            \"id\": 8,\n            \"name\": \"Mr. Michale Kerluke\",\n            \"specialty\": \"Cardiologist\"\n        },\n        {\n            \"id\": 9,\n            \"name\": \"Eryn Hagenes PhD\",\n            \"specialty\": \"Cardiologist\"\n        },\n        {\n            \"id\": 10,\n            \"name\": \"Shanelle Hettinger\",\n            \"specialty\": \"Cardiologist\"\n        }\n    ],\n    \"meta\": {\n        \"current_page\": 1,\n        \"last_page\": 1,\n        \"per_page\": 20,\n        \"total\": 10\n    }\n}"
+				}
+			]
 		},
 		{
 			"name": "List Appointments",
@@ -208,8 +1019,8 @@
 					}
 				],
 				"body": {
-					"mode": "formdata",
-					"formdata": []
+					"mode": "raw",
+					"raw": ""
 				},
 				"url": {
 					"raw": "{{site_url}}/appointments",
@@ -221,49 +1032,74 @@
 					]
 				}
 			},
-			"response": []
-		},
-		{
-			"name": "Logout",
-			"event": [
+			"response": [
 				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"// Clear the auth_token after logout\r",
-							"pm.collectionVariables.unset(\"auth_token\");\r",
-							"console.log(\"Auth token removed from collection\");\r",
-							""
+					"name": "Success Response",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
 						],
-						"type": "text/javascript",
-						"packages": {}
-					}
-				}
-			],
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Accept",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"email\": \"user2@mail.com\",\r\n    \"password\": \"password\"\r\n}"
-				},
-				"url": {
-					"raw": "{{site_url}}/logout",
-					"host": [
-						"{{site_url}}"
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{site_url}}/appointments",
+							"host": [
+								"{{site_url}}"
+							],
+							"path": [
+								"appointments"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.12"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 09 Sep 2025 12:27:14 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
 					],
-					"path": [
-						"logout"
-					]
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"message\": \"Appointments retrieved successfully\",\n    \"data\": [\n        {\n            \"id\": 32,\n            \"user\": {\n                \"id\": 11,\n                \"name\": \"User 1\",\n                \"email\": \"user1@mail.com\"\n            },\n            \"professional\": {\n                \"id\": 2,\n                \"name\": \"Nia Gusikowski Jr.\",\n                \"specialty\": \"Dentist\"\n            },\n            \"appointment_start_time\": \"2025-12-01 12:30\",\n            \"appointment_end_time\": \"2025-12-01 14:30\",\n            \"status\": \"booked\",\n            \"created_at\": \"2025-09-09 17:57:09\"\n        },\n        {\n            \"id\": 31,\n            \"user\": {\n                \"id\": 11,\n                \"name\": \"User 1\",\n                \"email\": \"user1@mail.com\"\n            },\n            \"professional\": {\n                \"id\": 1,\n                \"name\": \"Gene Koch\",\n                \"specialty\": \"Dentist\"\n            },\n            \"appointment_start_time\": \"2025-11-01 12:30\",\n            \"appointment_end_time\": \"2025-11-01 14:30\",\n            \"status\": \"booked\",\n            \"created_at\": \"2025-09-09 17:55:36\"\n        }\n    ],\n    \"meta\": {\n        \"current_page\": 1,\n        \"last_page\": 1,\n        \"per_page\": 20,\n        \"total\": 2\n    }\n}"
 				}
-			},
-			"response": []
+			]
 		},
 		{
 			"name": "Detailed Appointment",
@@ -286,7 +1122,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"healthcare_professional_id\": \"1\",\r\n    \"appointment_start_time\": \"2025-09-09 13:00\",\r\n    \"appointment_end_time\": \"2025-09-09 13:30\"\r\n}"
+					"raw": ""
 				},
 				"url": {
 					"raw": "{{site_url}}/appointments/1",
@@ -299,7 +1135,138 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Success Response",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{site_url}}/appointments/1",
+							"host": [
+								"{{site_url}}"
+							],
+							"path": [
+								"appointments",
+								"1"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.12"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 09 Sep 2025 12:28:03 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"message\": \"Appointment retrieved successfully\",\n    \"data\": {\n        \"id\": 1,\n        \"user\": {\n            \"id\": 1,\n            \"name\": \"Destini Konopelski\",\n            \"email\": \"kayla54@example.net\"\n        },\n        \"professional\": {\n            \"id\": 1,\n            \"name\": \"Gene Koch\",\n            \"specialty\": \"Dentist\"\n        },\n        \"appointment_start_time\": \"2025-10-09 12:38\",\n        \"appointment_end_time\": \"2025-10-09 13:38\",\n        \"status\": \"booked\",\n        \"created_at\": \"2025-09-09 17:51:39\"\n    }\n}"
+				},
+				{
+					"name": "Error Response",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{site_url}}/appointments/1",
+							"host": [
+								"{{site_url}}"
+							],
+							"path": [
+								"appointments",
+								"1"
+							]
+						}
+					},
+					"status": "Forbidden",
+					"code": 403,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.12"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 09 Sep 2025 12:29:47 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": false,\n    \"message\": \"You can only view your own appointments\"\n}"
+				}
+			]
 		},
 		{
 			"name": "Cancel Appointment",
@@ -317,23 +1284,152 @@
 						"type": "text"
 					}
 				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"healthcare_professional_id\": \"1\",\r\n    \"appointment_start_time\": \"2025-09-09 13:00\",\r\n    \"appointment_end_time\": \"2025-09-09 13:30\"\r\n}"
-				},
 				"url": {
-					"raw": "{{site_url}}/appointments/1/cancel",
+					"raw": "{{site_url}}/appointments/32/cancel",
 					"host": [
 						"{{site_url}}"
 					],
 					"path": [
 						"appointments",
-						"1",
+						"32",
 						"cancel"
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Success Response",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{site_url}}/appointments/32/cancel",
+							"host": [
+								"{{site_url}}"
+							],
+							"path": [
+								"appointments",
+								"32",
+								"cancel"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.12"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 09 Sep 2025 12:30:31 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"message\": \"Appointment cancelled successfully\",\n    \"data\": {\n        \"id\": 32,\n        \"appointment_start_time\": \"2025-12-01 12:30\",\n        \"appointment_end_time\": \"2025-12-01 14:30\",\n        \"status\": \"cancelled\",\n        \"created_at\": \"2025-09-09 17:57:09\"\n    }\n}"
+				},
+				{
+					"name": "Error Response",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{site_url}}/appointments/1/cancel",
+							"host": [
+								"{{site_url}}"
+							],
+							"path": [
+								"appointments",
+								"1",
+								"cancel"
+							]
+						}
+					},
+					"status": "Forbidden",
+					"code": 403,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.12"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 09 Sep 2025 12:28:25 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": false,\n    \"message\": \"You can only cancel your own appointments\"\n}"
+				}
+			]
 		},
 		{
 			"name": "Complete Appointment",
@@ -351,23 +1447,152 @@
 						"type": "text"
 					}
 				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"healthcare_professional_id\": \"1\",\r\n    \"appointment_start_time\": \"2025-09-09 13:00\",\r\n    \"appointment_end_time\": \"2025-09-09 13:30\"\r\n}"
-				},
 				"url": {
-					"raw": "{{site_url}}/appointments/1/complete",
+					"raw": "{{site_url}}/appointments/33/complete",
 					"host": [
 						"{{site_url}}"
 					],
 					"path": [
 						"appointments",
-						"1",
+						"33",
 						"complete"
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Error Response",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{site_url}}/appointments/31/complete",
+							"host": [
+								"{{site_url}}"
+							],
+							"path": [
+								"appointments",
+								"31",
+								"complete"
+							]
+						}
+					},
+					"status": "Unprocessable Content",
+					"code": 422,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.12"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 09 Sep 2025 12:31:28 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": false,\n    \"message\": \"Only booked appointments can be marked completed\"\n}"
+				},
+				{
+					"name": "Success Response",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{site_url}}/appointments/33/complete",
+							"host": [
+								"{{site_url}}"
+							],
+							"path": [
+								"appointments",
+								"33",
+								"complete"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.12"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 09 Sep 2025 12:32:46 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"message\": \"Appointment marked as completed successfully\",\n    \"data\": {\n        \"id\": 33,\n        \"appointment_start_time\": \"2025-12-10 12:30\",\n        \"appointment_end_time\": \"2025-12-10 14:30\",\n        \"status\": \"completed\",\n        \"created_at\": \"2025-09-09 18:02:31\"\n    }\n}"
+				}
+			]
 		}
 	],
 	"auth": {

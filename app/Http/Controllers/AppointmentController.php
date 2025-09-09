@@ -108,6 +108,10 @@ class AppointmentController extends BaseController
      */
     public function show(Request $request, Appointment $appointment)
     {
+        if ($appointment->user_id !== $request->user()->id) {
+            return $this->sendError('You can only view your own appointments', [], 403);
+        }
+
         try {
             return $this->sendResponse(new AppointmentResource($appointment->load('professional', 'user')), 'Appointment retrieved successfully');
         } catch (Throwable $e) {
@@ -176,7 +180,7 @@ class AppointmentController extends BaseController
             }
 
             if ($appointment->status !== 'booked') {
-                return $this->sendError('Only booked appointments can be marked completed', [], 422);
+                return $this->sendError('Only active appointments can be marked completed', [], 422);
             }
 
             $appointment->status = 'completed';
