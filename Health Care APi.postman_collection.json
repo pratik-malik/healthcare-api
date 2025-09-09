@@ -1,0 +1,415 @@
+{
+	"info": {
+		"_postman_id": "ab498ee8-5f63-4c91-b9ea-d5745281938b",
+		"name": "Health Care APi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38714652"
+	},
+	"item": [
+		{
+			"name": "Register",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"User 1\",\r\n    \"email\": \"user1@mail.com\",\r\n    \"password\": \"password\",\r\n    \"password_confirmation\": \"password\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{site_url}}/register",
+					"host": [
+						"{{site_url}}"
+					],
+					"path": [
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Parse JSON response\r",
+							"let response = pm.response.json();\r",
+							"\r",
+							"if (response.data.token) {\r",
+							"    pm.collectionVariables.set(\"auth_token\", response.data.token);\r",
+							"    console.log(\"Auth token saved to collection:\", response.data.token);\r",
+							"} else {\r",
+							"    console.warn(\"No token found in login response\");\r",
+							"}\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"user1@mail.com\",\r\n    \"password\": \"password\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{site_url}}/login",
+					"host": [
+						"{{site_url}}"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Auth User",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"healthcare_professional_id\": \"1\",\r\n    \"appointment_start_time\": \"2025-09-09 13:00\",\r\n    \"appointment_end_time\": \"2025-09-09 13:30\"\r\n}"
+				},
+				"url": {
+					"raw": "{{site_url}}/get-profile",
+					"host": [
+						"{{site_url}}"
+					],
+					"path": [
+						"get-profile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Book Appointment",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"healthcare_professional_id\": \"1\",\r\n    \"appointment_start_time\": \"2025-09-09 18:30\",\r\n    \"appointment_end_time\": \"2025-09-09 18:45\"\r\n}"
+				},
+				"url": {
+					"raw": "{{site_url}}/appointments",
+					"host": [
+						"{{site_url}}"
+					],
+					"path": [
+						"appointments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Professionals List",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{site_url}}/professionals",
+					"host": [
+						"{{site_url}}"
+					],
+					"path": [
+						"professionals"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Appointments",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "{{site_url}}/appointments",
+					"host": [
+						"{{site_url}}"
+					],
+					"path": [
+						"appointments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Logout",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Clear the auth_token after logout\r",
+							"pm.collectionVariables.unset(\"auth_token\");\r",
+							"console.log(\"Auth token removed from collection\");\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"user2@mail.com\",\r\n    \"password\": \"password\"\r\n}"
+				},
+				"url": {
+					"raw": "{{site_url}}/logout",
+					"host": [
+						"{{site_url}}"
+					],
+					"path": [
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Detailed Appointment",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"healthcare_professional_id\": \"1\",\r\n    \"appointment_start_time\": \"2025-09-09 13:00\",\r\n    \"appointment_end_time\": \"2025-09-09 13:30\"\r\n}"
+				},
+				"url": {
+					"raw": "{{site_url}}/appointments/1",
+					"host": [
+						"{{site_url}}"
+					],
+					"path": [
+						"appointments",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cancel Appointment",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"healthcare_professional_id\": \"1\",\r\n    \"appointment_start_time\": \"2025-09-09 13:00\",\r\n    \"appointment_end_time\": \"2025-09-09 13:30\"\r\n}"
+				},
+				"url": {
+					"raw": "{{site_url}}/appointments/1/cancel",
+					"host": [
+						"{{site_url}}"
+					],
+					"path": [
+						"appointments",
+						"1",
+						"cancel"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Complete Appointment",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"healthcare_professional_id\": \"1\",\r\n    \"appointment_start_time\": \"2025-09-09 13:00\",\r\n    \"appointment_end_time\": \"2025-09-09 13:30\"\r\n}"
+				},
+				"url": {
+					"raw": "{{site_url}}/appointments/1/complete",
+					"host": [
+						"{{site_url}}"
+					],
+					"path": [
+						"appointments",
+						"1",
+						"complete"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{auth_token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "site_url",
+			"value": ""
+		},
+		{
+			"key": "auth_token",
+			"value": ""
+		}
+	]
+}
