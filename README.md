@@ -82,6 +82,16 @@ Start the development server:
 php artisan serve
 ```
 
+## Upcoming improvements
+1. Booking Appointment features
+   - Let users move an existing booking to a new time (with same overlap + 24-hour rules).
+   - Allow patients to book recurring slots (e.g., every Monday at 10am for 6 weeks).
+   - Email/SMS reminders 24h and 1h before appointments.
+   - Add configurable gaps between appointments (e.g., 10 minutes between sessions).
+2. User Experience Features
+   - Sync appointments with Google Calendar, Outlook, or iCal.
+   - Instead of free-form booking, professionals define their available hours → users pick slots.
+   - Separate permissions for patients, professionals, and admins.
 
 ## License
 
