@@ -11,7 +11,8 @@ class BookAppointmentRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return true;
+        // Only allow authenticated users
+        return auth()->check();
     }
 
     /**
