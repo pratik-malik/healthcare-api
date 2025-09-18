@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class BookAppointmentRequest extends FormRequest
 {
@@ -12,7 +13,7 @@ class BookAppointmentRequest extends FormRequest
     public function authorize(): bool
     {
         // Only allow authenticated users
-        return auth()->check();
+        return Auth::check();
     }
 
     /**

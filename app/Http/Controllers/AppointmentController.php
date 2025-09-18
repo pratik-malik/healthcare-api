@@ -8,6 +8,7 @@ use App\Models\Appointment;
 use App\Services\AppointmentService;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Throwable;
@@ -58,7 +59,7 @@ class AppointmentController extends BaseController
         try {
             $appointment = $this->service->createAppointment($request->user(), $request->validated());
             return $this->sendResponse(new AppointmentResource($appointment->load('professional')), 'Appointment created successfully');
-        } catch (\DomainException|\InvalidArgumentException $e) {
+        } catch (\DomainException | \InvalidArgumentException $e) {
             // Only show safe, user-facing messages for known exceptions
             return $this->sendError($e->getMessage(), [], 422);
         } catch (Throwable $e) {
@@ -72,15 +73,13 @@ class AppointmentController extends BaseController
      * Show details of a specific appointment.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Appointment  $appointment
+     * @param  $appointment
      * @return \Illuminate\Http\JsonResponse
      */
-    public function show(Request $request, Appointment $appointment)
+    public function show(Request $request, $appointment)
     {
-        if ($appointment->user_id !== $request->user()->id) {
-            return $this->sendError('You can only view your own appointments', [], 403);
-        }
         try {
+            $this->service->getAppointmentForUser($appointment);
             return $this->sendResponse(new AppointmentResource($appointment->load('professional', 'user')), 'Appointment retrieved successfully');
         } catch (Throwable $e) {
             Log::error('Unable to fetch appointment details', ['exception' => $e]);
@@ -97,13 +96,13 @@ class AppointmentController extends BaseController
      * - The appointment is currently booked.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Appointment  $appointment
+     * @param  $appointment
      * @return \Illuminate\Http\JsonResponse
      */
-    public function cancel(Request $request, Appointment $appointment)
+    public function cancel(Request $request, $appointment)
     {
         try {
-            $appointment = $this->service->cancelAppointment($request->user(), $appointment);
+            $appointment = $this->service->cancelAppointment($request->user(), Appointment::find($appointment));
             return $this->sendResponse(new AppointmentResource($appointment), 'Appointment cancelled successfully');
         } catch (\DomainException $e) {
             return $this->sendError($e->getMessage(), [], $e->getCode() ?: 422);
@@ -124,10 +123,10 @@ class AppointmentController extends BaseController
      * @param  \App\Models\Appointment  $appointment
      * @return \Illuminate\Http\JsonResponse
      */
-    public function complete(Request $request, Appointment $appointment)
+    public function complete(Request $request, $appointment)
     {
         try {
-            $appointment = $this->service->completeAppointment($request->user(), $appointment);
+            $appointment = $this->service->completeAppointment($request->user(), Appointment::find($appointment));
             return $this->sendResponse(new AppointmentResource($appointment), 'Appointment marked as completed successfully');
         } catch (\DomainException $e) {
             return $this->sendError($e->getMessage(), [], $e->getCode() ?: 422);

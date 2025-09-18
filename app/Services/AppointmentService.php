@@ -7,6 +7,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Throwable;
 use App\Repositories\AppointmentRepository;
+use Illuminate\Support\Facades\Auth;
 
 class AppointmentService
 {
@@ -48,14 +49,25 @@ class AppointmentService
         ]);
     }
 
-    public function cancelAppointment($user, Appointment $appointment)
+    public function ensureUserOwnsAppointment($user, ?Appointment $appointment): Appointment
     {
-        if ($appointment->user_id !== $user->id) {
-            throw new \DomainException('You can only cancel your own appointments', 403);
+        if (!$appointment || $appointment->user_id !== $user->id) {
+            throw new \DomainException('Appointment not found or does not belong to you', 404);
         }
 
-        $now = Carbon::now();
-        $start = Carbon::parse($appointment->appointment_start_time);
+        return $appointment;
+    }
+
+    public function getAppointmentForUser(?Appointment $appointment): Appointment
+    {
+        return $this->ensureUserOwnsAppointment(Auth::user(), $appointment);
+    }
+
+    public function cancelAppointment($user, ?Appointment $appointment)
+    {
+        $appointment = $this->ensureUserOwnsAppointment($user, $appointment);
+        $now = now();
+        $start = $appointment->appointment_start_time;
 
         if ($start->lessThan($now->addDay())) {
             throw new \DomainException('Cancellation not allowed within 24 hours of the appointment time');
@@ -71,11 +83,9 @@ class AppointmentService
         return $appointment;
     }
 
-    public function completeAppointment($user, Appointment $appointment)
+    public function completeAppointment($user, ?Appointment $appointment)
     {
-        if ($appointment->user_id !== $user->id) {
-            throw new \DomainException('You can only complete your own appointments', 403);
-        }
+        $appointment = $this->ensureUserOwnsAppointment($user, $appointment);
 
         if ($appointment->status !== 'booked') {
             throw new \DomainException('Only active appointments can be marked completed');
